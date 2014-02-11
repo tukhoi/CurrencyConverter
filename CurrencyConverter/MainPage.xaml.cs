@@ -86,6 +86,24 @@ namespace CurrencyConverter
 
         private bool Validate()
         {
+            if (string.IsNullOrEmpty(txtFromCurrency.Text) || string.IsNullOrEmpty(txtToCurrency.Text))
+            {
+                ToastMessage.Show(AppResources.ErrEmptyCurrency);
+                return false;
+            }
+
+            var currencyCode = CurrencyCode.GetInstance();
+            if (!currencyCode.ContainsKey(txtFromCurrency.Text))
+            {
+                ToastMessage.Show(AppResources.ErrFromCurrencyNotFound);
+                return false;
+            }
+            if (!currencyCode.ContainsKey(txtToCurrency.Text))
+            {
+                ToastMessage.Show(AppResources.ErrToCurrencyNotFound);
+                return false;
+            }
+
             return true;
         }
 

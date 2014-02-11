@@ -7,9 +7,9 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CurrencyConverter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Convert currency, show exchange rate")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("DaVang Solutions")]
 [assembly: AssemblyProduct("CurrencyConverter")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]

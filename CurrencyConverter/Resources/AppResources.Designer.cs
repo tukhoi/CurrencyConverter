@@ -61,6 +61,15 @@ namespace CurrencyConverter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to copyright 2014 DaVang Solutions.
+        /// </summary>
+        public static string AboutTitle {
+            get {
+                return ResourceManager.GetString("AboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
         public static string AppBarButtonText {
@@ -79,7 +88,7 @@ namespace CurrencyConverter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MY APPLICATION.
+        ///   Looks up a localized string similar to CurrencyConverter.
         /// </summary>
         public static string ApplicationTitle {
             get {
@@ -133,11 +142,47 @@ namespace CurrencyConverter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to data is fetched from Yahoo - you use it at your own risk....
+        /// </summary>
+        public static string DisclaimerTitle {
+            get {
+                return ResourceManager.GetString("DisclaimerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no currency entered.
+        /// </summary>
+        public static string ErrEmptyCurrency {
+            get {
+                return ResourceManager.GetString("ErrEmptyCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to there&apos;s no such (from) currency code .
+        /// </summary>
+        public static string ErrFromCurrencyNotFound {
+            get {
+                return ResourceManager.GetString("ErrFromCurrencyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to there&apos;s unknown error occur.
         /// </summary>
         public static string ErrGenericError {
             get {
                 return ResourceManager.GetString("ErrGenericError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to there&apos;s no such (to) currency code.
+        /// </summary>
+        public static string ErrToCurrencyNotFound {
+            get {
+                return ResourceManager.GetString("ErrToCurrencyNotFound", resourceCulture);
             }
         }
         

@@ -117,16 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResourceFlowDirection" xml:space="preserve">
-    <value>LeftToRight</value>
-    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
-  </data>
-  <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
-    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
-  </data>
-  <data name="ApplicationTitle" xml:space="preserve">
-    <value>CurrencyConverter</value>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>viết bởi DaVang Solutions 2014</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
@@ -134,61 +126,69 @@
   <data name="AppBarMenuItemText" xml:space="preserve">
     <value>Menu Item</value>
   </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>đổi tỷ giá</value>
+  </data>
   <data name="AskResult" xml:space="preserve">
     <value>1 {0} = {1} {2}</value>
+  </data>
+  <data name="AskTitle" xml:space="preserve">
+    <value>mua:</value>
   </data>
   <data name="BidResult" xml:space="preserve">
     <value>1 {0} = {1} {2}</value>
   </data>
+  <data name="BidTitle" xml:space="preserve">
+    <value>bán:</value>
+  </data>
   <data name="ConvertButtonTitle" xml:space="preserve">
-    <value>convert</value>
+    <value>đổi</value>
+  </data>
+  <data name="DisclaimerTitle" xml:space="preserve">
+    <value>dữ liệu được lấy từ Yahoo - bạn tự chịu trách nhiệm khi sử dụng...</value>
+  </data>
+  <data name="ErrEmptyCurrency" xml:space="preserve">
+    <value>chưa nhập mã ngoại tệ</value>
+  </data>
+  <data name="ErrFromCurrencyNotFound" xml:space="preserve">
+    <value>không đúng mã ngoại tệ (nguồn)</value>
   </data>
   <data name="ErrGenericError" xml:space="preserve">
-    <value>there's unknown error occur</value>
+    <value>có lỗi xảy ra</value>
+  </data>
+  <data name="ErrToCurrencyNotFound" xml:space="preserve">
+    <value>không đúng mã ngoại tệ (đích)</value>
   </data>
   <data name="FetchingTitle" xml:space="preserve">
-    <value>fetching...</value>
+    <value>đang lấy...</value>
   </data>
   <data name="FromCurrencyTitle" xml:space="preserve">
-    <value>convert from</value>
+    <value>đổi từ</value>
   </data>
   <data name="LoadingTitle" xml:space="preserve">
-    <value>loading...</value>
+    <value>đang tải...</value>
   </data>
   <data name="MainPageTitle" xml:space="preserve">
-    <value>Currency Converter</value>
+    <value>đổi tỷ giá</value>
   </data>
   <data name="RateResult" xml:space="preserve">
     <value>1 {0} = {1} {2}</value>
   </data>
+  <data name="RateTitle" xml:space="preserve">
+    <value>tỷ giá:</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>vi-VN</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
   <data name="ToCurrencyTitle" xml:space="preserve">
-    <value>to</value>
+    <value>sang</value>
   </data>
   <data name="UpdateTitle" xml:space="preserve">
-    <value>refreshed on {0}</value>
-  </data>
-  <data name="AskTitle" xml:space="preserve">
-    <value>ask:</value>
-  </data>
-  <data name="BidTitle" xml:space="preserve">
-    <value>bid:</value>
-  </data>
-  <data name="RateTitle" xml:space="preserve">
-    <value>rate:</value>
-  </data>
-  <data name="AboutTitle" xml:space="preserve">
-    <value>copyright 2014 DaVang Solutions</value>
-  </data>
-  <data name="DisclaimerTitle" xml:space="preserve">
-    <value>data is fetched from Yahoo - you use it at your own risk...</value>
-  </data>
-  <data name="ErrEmptyCurrency" xml:space="preserve">
-    <value>no currency entered</value>
-  </data>
-  <data name="ErrFromCurrencyNotFound" xml:space="preserve">
-    <value>there's no such (from) currency code </value>
-  </data>
-  <data name="ErrToCurrencyNotFound" xml:space="preserve">
-    <value>there's no such (to) currency code</value>
+    <value>cập nhật lúc {0}</value>
   </data>
 </root>

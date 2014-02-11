@@ -41,14 +41,21 @@
          -->
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="{Binding Path=LocalizedResources.MainPageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28" Orientation="Horizontal">
+            <Image Source="Resources\icon.png" Width="100" Height="100" HorizontalAlignment="Left"/>
+            <TextBlock VerticalAlignment="Center" Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel Grid.Row="1" Margin="12,0,12,0">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0" Margin="0,0,12,0">
 
                 <TextBlock 
                     Text="{Binding Path=LocalizedResources.FromCurrencyTitle, Source={StaticResource LocalizedStrings}}" 
@@ -101,17 +108,22 @@
                 </toolkit:AutoCompleteBox>
 
                 <Button x:Name="btnConvert" 
-                        Width="Auto"
-                        Height="Auto"
-                        Content="{Binding Path=LocalizedResources.ConvertButtonTitle, Source={StaticResource LocalizedStrings}}" 
-                        Click="btnConvert_Click"/>
-                
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="btnConvert_Click">
+                    <StackPanel>
+                        <Image Source="Resources\convert.png" Stretch="Fill" Height="60" Width="60"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.ConvertButtonTitle, Source={StaticResource LocalizedStrings}}" TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -159,14 +171,29 @@
                            Text=""/>
 
                     <TextBlock x:Name="txtTime"
+                               Margin="12, 12, 0, 0"
                            Grid.Row="3" Grid.ColumnSpan="2"
                            Style="{StaticResource PhoneTextSmallStyle}"
                            TextWrapping="Wrap"
                            Text=""/>
-
                 </Grid>
+            </StackPanel>
 
-                
+            <StackPanel 
+                Grid.Row="1"
+                VerticalAlignment="Bottom">
+                <TextBlock x:Name="txtDisclaimer"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Style="{StaticResource PhoneTextSmallStyle}"
+                            TextWrapping="Wrap"
+                            Text="{Binding Path=LocalizedResources.DisclaimerTitle, Source={StaticResource LocalizedStrings}}"/>
+
+                <TextBlock x:Name="txtAbout"
+                            Grid.Row="5" Grid.ColumnSpan="2"
+                            VerticalAlignment="Bottom"
+                            Style="{StaticResource PhoneTextSmallStyle}"
+                            Text="{Binding Path=LocalizedResources.AboutTitle, Source={StaticResource LocalizedStrings}}"/>
             </StackPanel>
         </Grid>
 
