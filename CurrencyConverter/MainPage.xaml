@@ -43,158 +43,136 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28" Orientation="Horizontal">
             <Image Source="Resources\icon.png" Width="100" Height="100" HorizontalAlignment="Left"/>
-            <TextBlock VerticalAlignment="Center" Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock VerticalAlignment="Center" Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextLargeStyle}" Margin="12,0"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Height="Auto">
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
-            <StackPanel Grid.Row="0" Margin="0,0,12,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock 
+                Grid.Row="0" Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="{Binding Path=LocalizedResources.AmountTitle, Source={StaticResource LocalizedStrings}}" 
+                Style="{StaticResource PhoneTextLargeStyle}"/>
 
-                <TextBlock 
-                    Text="{Binding Path=LocalizedResources.FromCurrencyTitle, Source={StaticResource LocalizedStrings}}" 
-                    Style="{StaticResource PhoneTextLargeStyle}"/>
-                
-                <toolkit:AutoCompleteBox
-                    Name="txtFromCurrency"
-                    InputScope="Text"
-                    ItemsSource="{Binding}"
-                    ValueMemberPath="Code">
-                        <toolkit:AutoCompleteBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,7">
-                                    <TextBlock
-                                        Margin="8,0"
-                                        Text="{Binding Code}"/>
-                                    <TextBlock
-                                        FontSize="{StaticResource PhoneFontSizeNormal}"
-                                        Foreground="#ff666666"
-                                        Margin="8,-6,8,2"
-                                        Text="{Binding Name}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </toolkit:AutoCompleteBox.ItemTemplate>
-                </toolkit:AutoCompleteBox>
-                
-                <TextBlock 
-                    Text="{Binding Path=LocalizedResources.ToCurrencyTitle, Source={StaticResource LocalizedStrings}}" 
-                    Style="{StaticResource PhoneTextLargeStyle}"/>
+            <TextBox Width="300"
+                     HorizontalAlignment="Left"
+                     Grid.Row="0" Grid.Column="1"
+                    x:Name="txtAmount"/>
 
-                <toolkit:AutoCompleteBox
-                    Name="txtToCurrency"
-                    InputScope="Text"
-                    ItemsSource="{Binding}"
-                    ValueMemberPath="Code">
+            <TextBlock 
+                Grid.Row="1" Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="{Binding Path=LocalizedResources.FromCurrencyTitle, Source={StaticResource LocalizedStrings}}" 
+                Style="{StaticResource PhoneTextLargeStyle}"/>
+                
+            <toolkit:AutoCompleteBox
+                Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left"
+                Name="txtFromCurrency"
+                Width="300"
+                ItemsSource="{Binding}"
+                ValueMemberPath="Code">
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,7">
                                 <TextBlock
-                                        Margin="8,0"
-                                        Text="{Binding Code}"/>
+                                    Margin="8,0"
+                                    Text="{Binding Code}"/>
                                 <TextBlock
-                                        FontSize="{StaticResource PhoneFontSizeNormal}"
-                                        Foreground="#ff666666"
-                                        Margin="8,-6,8,2"
-                                        Text="{Binding Name}"/>
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="#ff666666"
+                                    Margin="8,-6,8,2"
+                                    Text="{Binding Name}"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
-                </toolkit:AutoCompleteBox>
+            </toolkit:AutoCompleteBox>
+                
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                Width="120"
+                VerticalAlignment="Center"
+                Text="{Binding Path=LocalizedResources.ToCurrencyTitle, Source={StaticResource LocalizedStrings}}" 
+                Style="{StaticResource PhoneTextLargeStyle}"/>
 
-                <Button x:Name="btnConvert" 
-                        HorizontalAlignment="Center"
+            <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="1"
+                                     HorizontalAlignment="Left"
+                Name="txtToCurrency"
+                Width="300"
+                ItemsSource="{Binding}"
+                ValueMemberPath="Code">
+                <toolkit:AutoCompleteBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,7">
+                            <TextBlock
+                                    Margin="8,0"
+                                    Text="{Binding Code}"/>
+                            <TextBlock
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="#ff666666"
+                                    Margin="8,-6,8,2"
+                                    Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:AutoCompleteBox.ItemTemplate>
+            </toolkit:AutoCompleteBox>
+                
+            <Button x:Name="btnConvert" 
+                    Grid.Row="3" Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Click="btnConvert_Click">
+                <StackPanel>
+                    <Image Source="Resources\convert.png" Stretch="Fill" Height="60" Width="60"/>
+                    <TextBlock Text="{Binding Path=LocalizedResources.ConvertButtonTitle, Source={StaticResource LocalizedStrings}}" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+                
+            <TextBlock x:Name="txtRateResult"
                         VerticalAlignment="Center"
-                        Click="btnConvert_Click">
-                    <StackPanel>
-                        <Image Source="Resources\convert.png" Stretch="Fill" Height="60" Width="60"/>
-                        <TextBlock Text="{Binding Path=LocalizedResources.ConvertButtonTitle, Source={StaticResource LocalizedStrings}}" TextAlignment="Center"/>
-                    </StackPanel>
-                </Button>
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock 
-                    x:Name="lblRate"
-                    Grid.Row="0" Grid.Column="0"
                     HorizontalAlignment="Left"
+                    Grid.Row="4" Grid.ColumnSpan="2"
                     Style="{StaticResource PhoneTextLargeStyle}"
-                    Text="{Binding Path=LocalizedResources.RateTitle, Source={StaticResource LocalizedStrings}}"/>
+                    TextWrapping="Wrap"
+                    Text="" Visibility="Collapsed"/>
 
-                    <TextBlock x:Name="txtRateResult"
-                           HorizontalAlignment="Left"
-                           Grid.Row="0" Grid.Column="1"
-                           Style="{StaticResource PhoneTextLargeStyle}"
-                           TextWrapping="Wrap"
-                           Text=""/>
-
-                    <TextBlock 
-                    x:Name="lblAsk"
-                    HorizontalAlignment="Left"
-                    Grid.Row="1" Grid.Column="0"
-                    Style="{StaticResource PhoneTextNormalStyle}"
-                    Text="{Binding Path=LocalizedResources.AskTitle, Source={StaticResource LocalizedStrings}}"/>
+                    
 
                     <TextBlock x:Name="txtAskResult"
-                           Grid.Row="1" Grid.Column="1"
+                           Grid.Row="5" Grid.ColumnSpan="2"
                            Style="{StaticResource PhoneTextNormalStyle}"
                            TextWrapping="Wrap"
-                           Text=""/>
-
-                    <TextBlock 
-                    x:Name="lblBid"
-                    HorizontalAlignment="Left"
-                    Grid.Row="2" Grid.Column="0"
-                    Style="{StaticResource PhoneTextNormalStyle}"
-                    Text="{Binding Path=LocalizedResources.BidTitle, Source={StaticResource LocalizedStrings}}"/>
+                           Text="" Visibility="Collapsed"/>
 
                     <TextBlock x:Name="txtBidResult"
-                           Grid.Row="2" Grid.Column="1"
+                           Grid.Row="6" Grid.ColumnSpan="2"
                            Style="{StaticResource PhoneTextNormalStyle}"
                            TextWrapping="Wrap"
-                           Text=""/>
+                           Text="" Visibility="Collapsed"/>
 
                     <TextBlock x:Name="txtTime"
                                Margin="12, 12, 0, 0"
-                           Grid.Row="3" Grid.ColumnSpan="2"
+                           Grid.Row="7" Grid.ColumnSpan="2"
                            Style="{StaticResource PhoneTextSmallStyle}"
                            TextWrapping="Wrap"
-                           Text=""/>
-                </Grid>
-            </StackPanel>
-
-            <StackPanel 
-                Grid.Row="1"
-                VerticalAlignment="Bottom">
-                <TextBlock x:Name="txtDisclaimer"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom"
-                            Style="{StaticResource PhoneTextSmallStyle}"
-                            TextWrapping="Wrap"
-                            Text="{Binding Path=LocalizedResources.DisclaimerTitle, Source={StaticResource LocalizedStrings}}"/>
-
-                <TextBlock x:Name="txtAbout"
-                            Grid.Row="5" Grid.ColumnSpan="2"
-                            VerticalAlignment="Bottom"
-                            Style="{StaticResource PhoneTextSmallStyle}"
-                            Text="{Binding Path=LocalizedResources.AboutTitle, Source={StaticResource LocalizedStrings}}"/>
-            </StackPanel>
+                           Text="" Visibility="Collapsed"/>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

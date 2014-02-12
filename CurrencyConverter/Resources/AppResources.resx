@@ -126,19 +126,13 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>CurrencyConverter</value>
+    <value>Live Currency Converter</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
   </data>
   <data name="AppBarMenuItemText" xml:space="preserve">
     <value>Menu Item</value>
-  </data>
-  <data name="AskResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
-  </data>
-  <data name="BidResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
   </data>
   <data name="ConvertButtonTitle" xml:space="preserve">
     <value>convert</value>
@@ -150,16 +144,13 @@
     <value>fetching...</value>
   </data>
   <data name="FromCurrencyTitle" xml:space="preserve">
-    <value>convert from</value>
+    <value>from</value>
   </data>
   <data name="LoadingTitle" xml:space="preserve">
     <value>loading...</value>
   </data>
   <data name="MainPageTitle" xml:space="preserve">
     <value>Currency Converter</value>
-  </data>
-  <data name="RateResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
   </data>
   <data name="ToCurrencyTitle" xml:space="preserve">
     <value>to</value>
@@ -190,5 +181,17 @@
   </data>
   <data name="ErrToCurrencyNotFound" xml:space="preserve">
     <value>there's no such (to) currency code</value>
+  </data>
+  <data name="AmountTitle" xml:space="preserve">
+    <value>amount</value>
+  </data>
+  <data name="RateThisAppTitle" xml:space="preserve">
+    <value>rate this app...</value>
+  </data>
+  <data name="AppBarAboutTitle" xml:space="preserve">
+    <value>about</value>
+  </data>
+  <data name="ErrAmount" xml:space="preserve">
+    <value>amount is not correct</value>
   </data>
 </root>

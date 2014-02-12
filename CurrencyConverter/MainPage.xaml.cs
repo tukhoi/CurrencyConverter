@@ -14,6 +14,8 @@ using CC.Utils.Extensions;
 using CurrencyConverter.ViewModel;
 using CC.AppServices.RateFetcher;
 using CurrencyConverter.Helper;
+using Microsoft.Phone.Tasks;
+using System.Globalization;
 
 namespace CurrencyConverter
 {
@@ -33,7 +35,9 @@ namespace CurrencyConverter
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Binding();
-            SetResultVisible(System.Windows.Visibility.Collapsed);
+            BuildLocalizedApplicationBar();
+            //SetResultVisible(System.Windows.Visibility.Collapsed);
+
             base.OnNavigatedTo(e);
         }
 
@@ -64,17 +68,23 @@ namespace CurrencyConverter
                 ToastMessage.Show(result.ErrorMessage());
             else
             {
-                var rateResultMessage = AppResources.RateResult;
-                rateResultMessage = string.Format(rateResultMessage, txtFromCurrency.Text, result.Target.Rate.ToString(), txtToCurrency.Text);
-                txtRateResult.Text = rateResultMessage;
+                var fetchResult = result.Target;
+                double amount = 0;
 
-                var askResultMessage = AppResources.AskResult;
-                askResultMessage = string.Format(askResultMessage, txtFromCurrency.Text, result.Target.Ask.ToString(), txtToCurrency.Text);
-                txtAskResult.Text = askResultMessage;
+                if (string.IsNullOrEmpty(txtAmount.Text))
+                    amount = 1;
+                else
+                    amount = double.Parse(txtAmount.Text);
 
-                var bidResultMessage = AppResources.BidResult;
-                bidResultMessage = string.Format(bidResultMessage, txtFromCurrency.Text, result.Target.Bid.ToString(), txtToCurrency.Text);
-                txtBidResult.Text = bidResultMessage;
+                string resultString = "{0} {1} = {2} {3}";
+                
+                string rateResult = string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Rate).ToString("n"), txtToCurrency.Text);
+                string bidResult = string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Bid).ToString("n"), txtToCurrency.Text);
+                string askResult = string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Ask).ToString("n"), txtToCurrency.Text);
+
+                txtRateResult.Text = rateResult;
+                txtBidResult.Text = AppResources.BidTitle + " " + bidResult;
+                txtAskResult.Text = AppResources.AskTitle + " " + askResult;
 
                 var time = AppResources.UpdateTitle;
                 time = string.Format(time, result.Target.Date + " " + result.Target.Time);
@@ -86,6 +96,20 @@ namespace CurrencyConverter
 
         private bool Validate()
         {
+            txtFromCurrency.Text = txtFromCurrency.Text.ToUpper();
+            txtToCurrency.Text = txtToCurrency.Text.ToUpper();
+
+            double result = 0;
+            if (!string.IsNullOrEmpty(txtAmount.Text) && !double.TryParse(txtAmount.Text, out result))
+            {
+                ToastMessage.Show(AppResources.ErrAmount);
+                txtAmount.Text = "";
+                return false;
+            }
+            else
+                txtAmount.Text = result.ToString("n");
+                
+
             if (string.IsNullOrEmpty(txtFromCurrency.Text) || string.IsNullOrEmpty(txtToCurrency.Text))
             {
                 ToastMessage.Show(AppResources.ErrEmptyCurrency);
@@ -103,35 +127,30 @@ namespace CurrencyConverter
                 ToastMessage.Show(AppResources.ErrToCurrencyNotFound);
                 return false;
             }
-
             return true;
         }
 
         private void SetResultVisible(Visibility visibility)
         {
-            lblRate.Visibility = visibility;
-            lblAsk.Visibility = visibility;
-            lblBid.Visibility = visibility;
             txtRateResult.Visibility = visibility;
             txtAskResult.Visibility = visibility;
             txtBidResult.Visibility = visibility;
             txtTime.Visibility = visibility;
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+        private void BuildLocalizedApplicationBar()
+        {
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.Mode = ApplicationBarMode.Default;
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
+            var aboutButton = new ApplicationBarIconButton();
+            aboutButton.Text = AppResources.AppBarAboutTitle;
+            aboutButton.IconUri = new Uri("/Assets/AppBar/like.png", UriKind.Relative);
+            aboutButton.Click += new EventHandler((sender, e) => {
+                NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
+            });
 
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
+            ApplicationBar.Buttons.Add(aboutButton);
+        }
     }
 }

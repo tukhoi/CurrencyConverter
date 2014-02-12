@@ -120,6 +120,12 @@
   <data name="AboutTitle" xml:space="preserve">
     <value>viết bởi DaVang Solutions 2014</value>
   </data>
+  <data name="AmountTitle" xml:space="preserve">
+    <value>số tiền</value>
+  </data>
+  <data name="AppBarAboutTitle" xml:space="preserve">
+    <value>giới thiệu</value>
+  </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
   </data>
@@ -127,16 +133,10 @@
     <value>Menu Item</value>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>đổi tỷ giá</value>
-  </data>
-  <data name="AskResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
+    <value>đổi tỷ giá trực tuyến</value>
   </data>
   <data name="AskTitle" xml:space="preserve">
     <value>mua:</value>
-  </data>
-  <data name="BidResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
   </data>
   <data name="BidTitle" xml:space="preserve">
     <value>bán:</value>
@@ -146,6 +146,9 @@
   </data>
   <data name="DisclaimerTitle" xml:space="preserve">
     <value>dữ liệu được lấy từ Yahoo - bạn tự chịu trách nhiệm khi sử dụng...</value>
+  </data>
+  <data name="ErrAmount" xml:space="preserve">
+    <value>số tiền không đúng</value>
   </data>
   <data name="ErrEmptyCurrency" xml:space="preserve">
     <value>chưa nhập mã ngoại tệ</value>
@@ -163,7 +166,7 @@
     <value>đang lấy...</value>
   </data>
   <data name="FromCurrencyTitle" xml:space="preserve">
-    <value>đổi từ</value>
+    <value>từ</value>
   </data>
   <data name="LoadingTitle" xml:space="preserve">
     <value>đang tải...</value>
@@ -171,8 +174,8 @@
   <data name="MainPageTitle" xml:space="preserve">
     <value>đổi tỷ giá</value>
   </data>
-  <data name="RateResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
+  <data name="RateThisAppTitle" xml:space="preserve">
+    <value>xếp hạng ứng dụng này...</value>
   </data>
   <data name="RateTitle" xml:space="preserve">
     <value>tỷ giá:</value>

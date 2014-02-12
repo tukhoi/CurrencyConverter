@@ -126,19 +126,13 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>đổi tỷ giá</value>
+    <value>đổi tỷ giá trực tuyến</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
   </data>
   <data name="AppBarMenuItemText" xml:space="preserve">
     <value>Menu Item</value>
-  </data>
-  <data name="AskResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
-  </data>
-  <data name="BidResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
   </data>
   <data name="ConvertButtonTitle" xml:space="preserve">
     <value>đổi</value>
@@ -150,16 +144,13 @@
     <value>đang lấy...</value>
   </data>
   <data name="FromCurrencyTitle" xml:space="preserve">
-    <value>đổi từ</value>
+    <value>từ</value>
   </data>
   <data name="LoadingTitle" xml:space="preserve">
     <value>đang tải...</value>
   </data>
   <data name="MainPageTitle" xml:space="preserve">
     <value>đổi tỷ giá</value>
-  </data>
-  <data name="RateResult" xml:space="preserve">
-    <value>1 {0} = {1} {2}</value>
   </data>
   <data name="ToCurrencyTitle" xml:space="preserve">
     <value>sang</value>
@@ -190,5 +181,17 @@
   </data>
   <data name="ErrToCurrencyNotFound" xml:space="preserve">
     <value>không đúng mã ngoại tệ (đích)</value>
+  </data>
+  <data name="AmountTitle" xml:space="preserve">
+    <value>số tiền</value>
+  </data>
+  <data name="RateThisAppTitle" xml:space="preserve">
+    <value>xếp hạng ứng dụng này...</value>
+  </data>
+  <data name="AppBarAboutTitle" xml:space="preserve">
+    <value>giới thiệu</value>
+  </data>
+  <data name="ErrAmount" xml:space="preserve">
+    <value>số tiền không đúng</value>
   </data>
 </root>

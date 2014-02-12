@@ -70,6 +70,24 @@ namespace CurrencyConverter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to amount.
+        /// </summary>
+        public static string AmountTitle {
+            get {
+                return ResourceManager.GetString("AmountTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to about.
+        /// </summary>
+        public static string AppBarAboutTitle {
+            get {
+                return ResourceManager.GetString("AppBarAboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
         public static string AppBarButtonText {
@@ -88,20 +106,11 @@ namespace CurrencyConverter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CurrencyConverter.
+        ///   Looks up a localized string similar to Live Currency Converter.
         /// </summary>
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 1 {0} = {1} {2}.
-        /// </summary>
-        public static string AskResult {
-            get {
-                return ResourceManager.GetString("AskResult", resourceCulture);
             }
         }
         
@@ -111,15 +120,6 @@ namespace CurrencyConverter.Resources {
         public static string AskTitle {
             get {
                 return ResourceManager.GetString("AskTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 1 {0} = {1} {2}.
-        /// </summary>
-        public static string BidResult {
-            get {
-                return ResourceManager.GetString("BidResult", resourceCulture);
             }
         }
         
@@ -147,6 +147,15 @@ namespace CurrencyConverter.Resources {
         public static string DisclaimerTitle {
             get {
                 return ResourceManager.GetString("DisclaimerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to amount is not correct.
+        /// </summary>
+        public static string ErrAmount {
+            get {
+                return ResourceManager.GetString("ErrAmount", resourceCulture);
             }
         }
         
@@ -196,7 +205,7 @@ namespace CurrencyConverter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to convert from.
+        ///   Looks up a localized string similar to from.
         /// </summary>
         public static string FromCurrencyTitle {
             get {
@@ -223,11 +232,11 @@ namespace CurrencyConverter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1 {0} = {1} {2}.
+        ///   Looks up a localized string similar to rate this app....
         /// </summary>
-        public static string RateResult {
+        public static string RateThisAppTitle {
             get {
-                return ResourceManager.GetString("RateResult", resourceCulture);
+                return ResourceManager.GetString("RateThisAppTitle", resourceCulture);
             }
         }
         

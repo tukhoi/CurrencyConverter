@@ -6,11 +6,11 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CurrencyConverter")]
+[assembly: AssemblyTitle("LiveCurrencyConverter")]
 [assembly: AssemblyDescription("Convert currency, show exchange rate")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DaVang Solutions")]
-[assembly: AssemblyProduct("CurrencyConverter")]
+[assembly: AssemblyProduct("LiveCurrencyConverter")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
