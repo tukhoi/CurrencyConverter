@@ -1,6 +1,6 @@
-﻿using CurrencyConverter.Resources;
+﻿using LiveCurrencyConverter.Resources;
 
-namespace CurrencyConverter
+namespace LiveCurrencyConverter
 {
     /// <summary>
     /// Provides access to string resources.

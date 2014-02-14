@@ -6,9 +6,9 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using CurrencyConverter.Resources;
+using LiveCurrencyConverter.Resources;
 
-namespace CurrencyConverter
+namespace LiveCurrencyConverter
 {
     public partial class App : Application
     {

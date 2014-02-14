@@ -88,6 +88,8 @@
     <Compile Include="Extensions\Enumerable.cs" />
     <Compile Include="Extensions\PhoneApplicationPageExtensions.cs" />
     <Compile Include="Extensions\WebClientExtensions.cs" />
+    <Compile Include="Helpers\ConnectivityHelper.cs" />
+    <Compile Include="Helpers\ConvertHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\WebTasks.cs" />
   </ItemGroup>

@@ -4,8 +4,9 @@
   <Languages xmlns="">
     <Language code="vi" />
     <Language code="vi-VN" />
+    <Language code="en-US" />
   </Languages>
-  <App xmlns="" ProductID="{a9ef7624-b296-4f6e-8bc0-9699e01489c4}" Title="LiveCurrencyConverter" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="CurrencyConverter author" Description="Convert currency live, show exchange rate, using data from Yahoo" Publisher="CurrencyConverter" PublisherID="{3a12b536-5819-4f09-ab88-f7db695fc777}">
+  <App xmlns="" ProductID="{a9ef7624-b296-4f6e-8bc0-9699e01489c4}" Title="LiveCurrencyConverter" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="DaVang Solutions" Description="Convert currency live, show exchange rate, using data from Yahoo" Publisher="LiveCurrencyConverter" PublisherID="{3a12b536-5819-4f09-ab88-f7db695fc777}">
     <IconPath IsRelative="true" IsResource="false">Resources\icon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

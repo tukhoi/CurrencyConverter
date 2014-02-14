@@ -1,5 +1,5 @@
 ﻿using Coding4Fun.Toolkit.Controls;
-using CurrencyConverter.Resources;
+using LiveCurrencyConverter.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace CurrencyConverter.Helper
+namespace LiveCurrencyConverter.Helper
 {
     public class ToastMessage
     {

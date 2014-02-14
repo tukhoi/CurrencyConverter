@@ -145,7 +145,10 @@
     <value>đổi</value>
   </data>
   <data name="DisclaimerTitle" xml:space="preserve">
-    <value>dữ liệu được lấy từ Yahoo - bạn tự chịu trách nhiệm khi sử dụng...</value>
+    <value>dữ liệu được lấy từ YahooFinance, OpenExchangeRates - bạn tự chịu trách nhiệm khi sử dụng...</value>
+  </data>
+  <data name="EmailTitle" xml:space="preserve">
+    <value>vui lòng liên hệ davangsolutions@outlook.com nếu bạn muốn thêm nhà cung cấp khác vào chương trình...</value>
   </data>
   <data name="ErrAmount" xml:space="preserve">
     <value>số tiền không đúng</value>
@@ -158,6 +161,9 @@
   </data>
   <data name="ErrGenericError" xml:space="preserve">
     <value>có lỗi xảy ra</value>
+  </data>
+  <data name="ErrNoNetwork" xml:space="preserve">
+    <value>không có mạng...</value>
   </data>
   <data name="ErrToCurrencyNotFound" xml:space="preserve">
     <value>không đúng mã ngoại tệ (đích)</value>
@@ -173,6 +179,12 @@
   </data>
   <data name="MainPageTitle" xml:space="preserve">
     <value>đổi tỷ giá</value>
+  </data>
+  <data name="NATitle" xml:space="preserve">
+    <value>không có</value>
+  </data>
+  <data name="ProviderTitle" xml:space="preserve">
+    <value>nhà cung cấp</value>
   </data>
   <data name="RateThisAppTitle" xml:space="preserve">
     <value>xếp hạng ứng dụng này...</value>
@@ -193,5 +205,8 @@
   </data>
   <data name="UpdateTitle" xml:space="preserve">
     <value>cập nhật lúc {0}</value>
+  </data>
+  <data name="VersionTitle" xml:space="preserve">
+    <value>phiên bản 1.1 - cập nhật ngày 14/02/2014</value>
   </data>
 </root>

@@ -90,6 +90,9 @@
     <Compile Include="RateFetcher\FetchResult.cs" />
     <Compile Include="RateFetcher\IExchangeRateFetcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateFetcher\OpenExchangeRates\OXRFetcher.cs" />
+    <Compile Include="RateFetcher\OpenExchangeRates\OXRResult.cs" />
+    <Compile Include="RateFetcher\RateFetcherManager.cs" />
     <Compile Include="RateFetcher\Yahoo\YahooResult.cs" />
     <Compile Include="RateFetcher\Yahoo\YahooFetcher.cs" />
   </ItemGroup>

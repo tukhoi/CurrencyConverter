@@ -7,22 +7,22 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using CurrencyConverter.Resources;
+using LiveCurrencyConverter.Resources;
 using CC.AppServices;
 using CC.AppServices.RateFetcher.Yahoo;
 using CC.Utils.Extensions;
-using CurrencyConverter.ViewModel;
+using LiveCurrencyConverter.ViewModel;
 using CC.AppServices.RateFetcher;
-using CurrencyConverter.Helper;
+using LiveCurrencyConverter.Helper;
 using Microsoft.Phone.Tasks;
 using System.Globalization;
+using CC.Utils.Helpers;
+using CC.AppServices.RateFetcher.OpenExchangeRates;
 
-namespace CurrencyConverter
+namespace LiveCurrencyConverter
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        IExchangeRateFetcher _fetcher = new YahooFetcher();
-
         // Constructor
         public MainPage()
         {
@@ -60,9 +60,21 @@ namespace CurrencyConverter
         private async void btnConvert_Click(object sender, RoutedEventArgs e)
         {
             if (!Validate()) return;
+            if (!ConnectivityHelper.NetworkAvailable())
+            {
+                ToastMessage.Show(AppResources.ErrNoNetwork);
+                return;
+            }
+
+            var fetcher = GetFetcher();
+            if (fetcher == null)
+            {
+                ToastMessage.Show("");
+                return;
+            }
 
             this.SetProgressIndicator(true, AppResources.FetchingTitle);
-            var result = await _fetcher.Fetch(txtFromCurrency.Text, txtToCurrency.Text);
+            var result = await fetcher.Fetch(txtFromCurrency.Text, txtToCurrency.Text);
             this.SetProgressIndicator(false);
             if (result.HasError)
                 ToastMessage.Show(result.ErrorMessage());
@@ -76,19 +88,7 @@ namespace CurrencyConverter
                 else
                     amount = double.Parse(txtAmount.Text);
 
-                string resultString = "{0} {1} = {2} {3}";
-                
-                string rateResult = string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Rate).ToString("n"), txtToCurrency.Text);
-                string bidResult = string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Bid).ToString("n"), txtToCurrency.Text);
-                string askResult = string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Ask).ToString("n"), txtToCurrency.Text);
-
-                txtRateResult.Text = rateResult;
-                txtBidResult.Text = AppResources.BidTitle + " " + bidResult;
-                txtAskResult.Text = AppResources.AskTitle + " " + askResult;
-
-                var time = AppResources.UpdateTitle;
-                time = string.Format(time, result.Target.Date + " " + result.Target.Time);
-                txtTime.Text = time;
+                PopulateResult(amount, fetchResult);
 
                 SetResultVisible(System.Windows.Visibility.Visible);
             }
@@ -99,7 +99,7 @@ namespace CurrencyConverter
             txtFromCurrency.Text = txtFromCurrency.Text.ToUpper();
             txtToCurrency.Text = txtToCurrency.Text.ToUpper();
 
-            double result = 0;
+            double result = 1;
             if (!string.IsNullOrEmpty(txtAmount.Text) && !double.TryParse(txtAmount.Text, out result))
             {
                 ToastMessage.Show(AppResources.ErrAmount);
@@ -128,6 +128,38 @@ namespace CurrencyConverter
                 return false;
             }
             return true;
+        }
+
+        private void PopulateResult(double amount, FetchResult fetchResult)
+        {
+            string resultString = "{0} {1} = {2} {3}";
+
+            string rateResult = string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Rate).ToString("n"), txtToCurrency.Text);
+
+            string bidResult = fetchResult.Bid == -1 ? AppResources.NATitle :
+                string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Bid).ToString("n"), txtToCurrency.Text);
+
+            string askResult = fetchResult.Ask == -1 ? AppResources.NATitle :
+                string.Format(resultString, amount.ToString("n"), txtFromCurrency.Text, (amount * fetchResult.Ask).ToString("n"), txtToCurrency.Text);
+
+            txtRateResult.Text = rateResult;
+            txtBidResult.Text = AppResources.BidTitle + " " + bidResult;
+            txtAskResult.Text = AppResources.AskTitle + " " + askResult;
+
+            var time = AppResources.UpdateTitle;
+            time = string.Format(time, fetchResult.Date + " " + fetchResult.Time);
+            txtTime.Text = time;
+        }
+
+        private IExchangeRateFetcher GetFetcher()
+        {
+            string provider = (string)lpkProvider.SelectedItem;
+            if (provider.Equals("YahooFinance", StringComparison.InvariantCultureIgnoreCase))
+                return RateFetcherManager.GetFetcher(Provider.YahooFinance);
+            if (provider.Equals("OpenExchangeRates", StringComparison.InvariantCultureIgnoreCase))
+                return RateFetcherManager.GetFetcher(Provider.OpenExchangeRates);
+
+            return null;
         }
 
         private void SetResultVisible(Visibility visibility)

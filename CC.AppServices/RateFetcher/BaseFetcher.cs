@@ -13,18 +13,24 @@ namespace CC.AppServices.RateFetcher
 
         public async Task<AppResult<FetchResult>> Fetch(string from, string to)
         {
-            if (string.IsNullOrEmpty(from) || string.IsNullOrEmpty(to))
-                return Result(ErrorCode.CurrenciesToConvertIsNullOrEmpty);
-
-            var url = PrepareUrl(from, to);
-            var data = await GetRawResult(url);
-            if (!string.IsNullOrEmpty(data.Trim()))
+            try
             {
-                var value = ParseRate(data);
-                return Result(value);
-            }
+                if (string.IsNullOrEmpty(from) || string.IsNullOrEmpty(to))
+                    return Result(ErrorCode.CurrenciesToConvertIsNullOrEmpty);
 
-            return Result(ErrorCode.ErrorWhileFetchExchangeRate);
+                var url = PrepareUrl(from, to);
+                var data = await GetRawResult(url);
+                if (!string.IsNullOrEmpty(data.Trim()))
+                {
+                    var value = ParseRate(data);
+                    return Result(value);
+                }
+                return Result(ErrorCode.ErrorWhileFetchExchangeRate);
+            }
+            catch (Exception ex)
+            {
+                return Result(ErrorCode.ErrorWhileFetchExchangeRate);
+            }
         }
 
         protected virtual async Task<string> GetRawResult(string requestUri)
@@ -33,6 +39,7 @@ namespace CC.AppServices.RateFetcher
         }
 
         protected internal abstract FetchResult ParseRate(string data);
+
         protected internal abstract string PrepareUrl(string from, string to);
 
         protected internal AppResult<FetchResult> Result(FetchResult result)

@@ -1,13 +1,13 @@
 ﻿using CC.AppServices;
 using CC.AppServices.RateFetcher;
-using CurrencyConverter.Resources;
+using LiveCurrencyConverter.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CurrencyConverter.Helper
+namespace LiveCurrencyConverter.Helper
 {
     public static class FetchResultExtensions
     {

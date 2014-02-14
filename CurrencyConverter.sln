@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverter", "CurrencyConverter\CurrencyConverter.csproj", "{A9EF7624-B296-4F6E-8BC0-9699E01489C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCurrencyConverter", "LiveCurrencyConverter\LiveCurrencyConverter.csproj", "{A9EF7624-B296-4F6E-8BC0-9699E01489C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CC.AppServices", "CC.AppServices\CC.AppServices.csproj", "{E5A46E0D-0A7A-458C-9D00-02CA3E148C49}"
 EndProject

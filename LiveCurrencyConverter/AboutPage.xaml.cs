@@ -9,7 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 
-namespace CurrencyConverter
+namespace LiveCurrencyConverter
 {
     public partial class AboutPage : PhoneApplicationPage
     {
