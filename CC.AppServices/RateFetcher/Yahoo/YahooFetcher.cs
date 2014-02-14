@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace CC.AppServices.RateFetcher.Yahoo
             return url;
         }
 
+        /// <summary>
+        /// It's very important here to make sure rate returned is en-US culture
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         protected internal override FetchResult ParseRate(string data)
         {
             var result = JsonConvert.DeserializeObject<YahooResult>(data, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
@@ -40,11 +46,13 @@ namespace CC.AppServices.RateFetcher.Yahoo
 
             double rate, ask, bid;
 
-            if (double.TryParse(result.query.results.rate.Rate, out rate))
+            CultureInfo culture = new CultureInfo("en-US");
+
+            if (double.TryParse(result.query.results.rate.Rate, NumberStyles.Currency, culture, out rate))
                 fetchResult.Rate = rate;
-            if (double.TryParse(result.query.results.rate.Ask, out ask))
+            if (double.TryParse(result.query.results.rate.Ask, NumberStyles.Currency, culture, out ask))
                 fetchResult.Ask = ask;
-            if (double.TryParse(result.query.results.rate.Bid, out bid))
+            if (double.TryParse(result.query.results.rate.Bid, NumberStyles.Currency, culture, out bid))
                 fetchResult.Bid = bid;
 
             return fetchResult;
