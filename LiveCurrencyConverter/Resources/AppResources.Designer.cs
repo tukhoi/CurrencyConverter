@@ -322,7 +322,7 @@ namespace LiveCurrencyConverter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to version 1.2 - update on Feb 17 2014.
+        ///   Looks up a localized string similar to version 1.2.1 - update on Feb 24 2014.
         /// </summary>
         public static string VersionTitle {
             get {
