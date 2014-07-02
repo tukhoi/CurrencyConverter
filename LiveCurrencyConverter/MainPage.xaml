@@ -8,12 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:adduplex="clr-namespace:AdDuplex;assembly=AdDuplex.WindowsPhone"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    Loaded="PhoneApplicationPage_Loaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -50,57 +52,64 @@
         <!--ContentPanel - place additional content here-->
         <ScrollViewer Grid.Row="1">
             <Grid x:Name="ContentPanel" Margin="12,0,12,0" Height="Auto">
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="135"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <TextBlock 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <adduplex:AdControl Grid.Row="0"
+                Grid.ColumnSpan="2"
+                x:Name="adControl"
+                Margin="0"
+                AppId="107363"/>
+
+                <TextBlock 
                 Margin="12, 12, 0, 12"
-                Grid.Row="0" Grid.Column="0"
+                Grid.Row="1" Grid.Column="0"
                 VerticalAlignment="Center"
                 Text="{Binding Path=LocalizedResources.ProviderTitle, Source={StaticResource LocalizedStrings}}" 
                 Style="{StaticResource PhoneTextLargeStyle}"/>
 
-            <toolkit:ListPicker
+                <toolkit:ListPicker
                 x:Name="lpkProvider"
-                Grid.Row="0" Grid.Column="1">
-                <sys:String>YahooFinance</sys:String>
-                <sys:String>OpenExchangeRates</sys:String>
-            </toolkit:ListPicker>
+                Grid.Row="1" Grid.Column="1">
+                    <sys:String>YahooFinance</sys:String>
+                    <sys:String>OpenExchangeRates</sys:String>
+                </toolkit:ListPicker>
 
-            <TextBlock 
-                Grid.Row="1" Grid.Column="0"
+                <TextBlock 
+                Grid.Row="2" Grid.Column="0"
                 VerticalAlignment="Center"
                 Text="{Binding Path=LocalizedResources.AmountTitle, Source={StaticResource LocalizedStrings}}" 
                 Style="{StaticResource PhoneTextLargeStyle}"/>
 
-            <TextBox Width="300"
+                <TextBox Width="300"
                      HorizontalAlignment="Left"
-                     Grid.Row="1" Grid.Column="1"
+                     Grid.Row="2" Grid.Column="1"
                     x:Name="txtAmount"/>
 
-            <TextBlock 
-                Grid.Row="2" Grid.Column="0"
+                <TextBlock 
+                Grid.Row="3" Grid.Column="0"
                 VerticalAlignment="Center"
                 Text="{Binding Path=LocalizedResources.FromCurrencyTitle, Source={StaticResource LocalizedStrings}}" 
                 Style="{StaticResource PhoneTextLargeStyle}"/>
-                
-            <toolkit:AutoCompleteBox
-                Grid.Row="2" Grid.Column="1"
+
+                <toolkit:AutoCompleteBox
+                Grid.Row="3" Grid.Column="1"
                 HorizontalAlignment="Left"
                 Name="txtFromCurrency"
                 Width="300"
@@ -120,77 +129,74 @@
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
-            </toolkit:AutoCompleteBox>
-                
-            <TextBlock Grid.Row="3" Grid.Column="0"
+                </toolkit:AutoCompleteBox>
+
+                <TextBlock Grid.Row="4" Grid.Column="0"
                 Width="120"
                 VerticalAlignment="Center"
                 Text="{Binding Path=LocalizedResources.ToCurrencyTitle, Source={StaticResource LocalizedStrings}}" 
                 Style="{StaticResource PhoneTextLargeStyle}"/>
 
-            <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="1"
+                <toolkit:AutoCompleteBox Grid.Row="4" Grid.Column="1"
                                      HorizontalAlignment="Left"
                 Name="txtToCurrency"
                 Width="300"
                 ItemsSource="{Binding}"
                 ValueMemberPath="Code">
-                <toolkit:AutoCompleteBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="0,7">
-                            <TextBlock
+                    <toolkit:AutoCompleteBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,7">
+                                <TextBlock
                                     Margin="8,0"
                                     Text="{Binding Code}"/>
-                            <TextBlock
+                                <TextBlock
                                     FontSize="{StaticResource PhoneFontSizeNormal}"
                                     Foreground="#ff666666"
                                     Margin="8,-6,8,2"
                                     Text="{Binding Name}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </toolkit:AutoCompleteBox.ItemTemplate>
-            </toolkit:AutoCompleteBox>
-                
-            <Button x:Name="btnConvert" 
-                    Grid.Row="4" Grid.Column="1"
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:AutoCompleteBox.ItemTemplate>
+                </toolkit:AutoCompleteBox>
+
+                <Button x:Name="btnConvert" 
+                    Grid.Row="5" Grid.Column="1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Click="btnConvert_Click">
-                <StackPanel>
-                    <Image Source="Resources\convert.png" Stretch="Fill" Height="60" Width="60"/>
-                    <TextBlock Text="{Binding Path=LocalizedResources.ConvertButtonTitle, Source={StaticResource LocalizedStrings}}" TextAlignment="Center"/>
-                </StackPanel>
-            </Button>
+                    <StackPanel>
+                        <Image Source="Resources\convert.png" Stretch="Fill" Height="60" Width="60"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.ConvertButtonTitle, Source={StaticResource LocalizedStrings}}" TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-                
-            <TextBlock x:Name="txtRateResult"
+                <TextBlock x:Name="txtRateResult"
                         VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                    Grid.Row="5" Grid.ColumnSpan="2"
+                    Grid.Row="6" Grid.ColumnSpan="2"
                     Style="{StaticResource PhoneTextLargeStyle}"
                     TextWrapping="Wrap"
                     Text="" Visibility="Collapsed"/>
 
-                    
-
-                    <TextBlock x:Name="txtAskResult"
-                           Grid.Row="6" Grid.ColumnSpan="2"
-                           Style="{StaticResource PhoneTextNormalStyle}"
-                           TextWrapping="Wrap"
-                           Text="" Visibility="Collapsed"/>
-
-                    <TextBlock x:Name="txtBidResult"
+                <TextBlock x:Name="txtAskResult"
                            Grid.Row="7" Grid.ColumnSpan="2"
                            Style="{StaticResource PhoneTextNormalStyle}"
                            TextWrapping="Wrap"
                            Text="" Visibility="Collapsed"/>
 
-                    <TextBlock x:Name="txtTime"
-                               Margin="12, 12, 0, 0"
+                <TextBlock x:Name="txtBidResult"
                            Grid.Row="8" Grid.ColumnSpan="2"
+                           Style="{StaticResource PhoneTextNormalStyle}"
+                           TextWrapping="Wrap"
+                           Text="" Visibility="Collapsed"/>
+
+                <TextBlock x:Name="txtTime"
+                               Margin="12, 12, 0, 0"
+                           Grid.Row="9" Grid.ColumnSpan="2"
                            Style="{StaticResource PhoneTextSmallStyle}"
                            TextWrapping="Wrap"
                            Text="" Visibility="Collapsed"/>
-        </Grid>
+            </Grid>
         </ScrollViewer>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

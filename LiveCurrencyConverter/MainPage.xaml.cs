@@ -184,5 +184,10 @@ namespace LiveCurrencyConverter
 
             ApplicationBar.Buttons.Add(aboutButton);
         }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GoogleAnalytics.EasyTracker.GetTracker().SendView(this.ToString());
+        }
     }
 }

@@ -23,5 +23,10 @@ namespace LiveCurrencyConverter
             MarketplaceReviewTask oRateTask = new MarketplaceReviewTask();
             oRateTask.Show();
         }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GoogleAnalytics.EasyTracker.GetTracker().SendView(this.ToString());
+        }
     }
 }

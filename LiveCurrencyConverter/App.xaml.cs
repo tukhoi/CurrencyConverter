@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LiveCurrencyConverter.Resources;
+using System.Text;
 
 namespace LiveCurrencyConverter
 {
@@ -99,6 +100,13 @@ namespace LiveCurrencyConverter
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }
+
+            var message = new StringBuilder();
+            message.AppendLine("*****Message: " + e.ExceptionObject.Message + "*****");
+            message.AppendLine("*****Source: " + e.ExceptionObject.Source + "*****");
+            message.AppendLine("*****Stack trace: " + e.ExceptionObject.StackTrace + "*****");
+
+            GoogleAnalytics.EasyTracker.GetTracker().SendException(message.ToString(), false);
         }
 
         #region Phone application initialization
