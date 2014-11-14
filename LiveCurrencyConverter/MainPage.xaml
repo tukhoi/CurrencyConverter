@@ -72,10 +72,11 @@
                 </Grid.ColumnDefinitions>
 
                 <adduplex:AdControl Grid.Row="0"
-                Grid.ColumnSpan="2"
-                x:Name="adControl"
-                Margin="0"
-                AppId="107363"/>
+                    Grid.ColumnSpan="2"
+                    x:Name="adControl"
+                    Margin="-12,0,0,0"
+                    IsTest="True"
+                    AppId="107363"/>
 
                 <TextBlock 
                 Margin="12, 12, 0, 12"
